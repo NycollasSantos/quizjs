@@ -24,8 +24,14 @@ git clone https://github.com/TIQuizApi/projetoPadrao
 durante a aula utilizei as extensões:
 
 Thunder Client
-
 Liver Server
+
+Adicionamos o módulo ```jsonwebtoken```
 
 https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch
 https://axios-http.com/docs/intro
+
+## Estrutura de pastas do projeto
+
+pasta ```database``` contém o arquivo json que é o banco de dados e o arquivo ```sgdb.js``` que controla a persistência dos dados no arquivo json.
+
