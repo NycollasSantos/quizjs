@@ -15,15 +15,14 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use(cors())
 
+
 app.get('/', function (req, res) {
     res.send('🚒 Hello World')
 })
 
 app.post('/auth', auth.authentication )
 
-cria_rotas(app,'/jogos','jogos')
-cria_rotas(app,'/jogadores','jogadores')
-cria_rotas(app,'/frutas','frutas') 
+cria_rotas(app,'/questoes','questions')
 
 
 app.listen(3000, () => {

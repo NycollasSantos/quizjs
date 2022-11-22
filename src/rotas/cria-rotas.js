@@ -3,12 +3,31 @@ import auth from '../auth.js'
 
 function cria_rotas(app,nome_rota,nome_base) {
 
-    app.route(nome_rota).get(auth.middlewareAuth, function (req, res) {
+    // rota GET com autenticação
+    //app.route(nome_rota).get(auth.middlewareAuth, function (req, res) {
+    //    console.log('alguém fez requisição GET '+nome_rota);
+    //    res.json(sgdb.db[nome_base])
+    //})
+
+    // rota GET sem autenticação
+    app.get(nome_rota, function (req, res) {
         console.log('alguém fez requisição GET '+nome_rota);
         res.json(sgdb.db[nome_base])
     })
 
-    app.route(nome_rota+'/:id').get(auth.middlewareAuth, function (req, res) {
+    // rota GET/ID com autenticação
+    //app.route(nome_rota+'/:id').get(auth.middlewareAuth, function (req, res) {
+    //    console.log('alguém fez requisição GET '+nome_rota);
+    //    console.log(req.params);
+    //    let jogo = sgdb.db[nome_base][req.params.id]
+    //    if (jogo == undefined) {
+    //        res.json({})
+    //    }
+    //    res.json(jogo)
+    //})
+
+    // rota GET/ID sem autenticação
+    app.get(nome_rota+'/:id', function (req, res) {
         console.log('alguém fez requisição GET '+nome_rota);
         console.log(req.params);
         let jogo = sgdb.db[nome_base][req.params.id]

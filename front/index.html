@@ -23,8 +23,8 @@
 <body>
 
     <h1>Teste do servidor</h1>
-    <button id="botao1">pegar jogos</button>
-    <button id="botao2">pegar jogadores</button>
+    <button id="botao1">pegar questão</button>
+    <button id="botao2">pegar token</button>
     <div id="caixa" class="item" style="width: 300px">
 
     </div>
@@ -38,32 +38,32 @@
 
         elem1.addEventListener('click', () => {
             console.log('cliquei no botão 1')
-            axios.get('http://localhost:3000/jogos').then((response) => {
+            axios.get('http://localhost:3000/questoes/q01').then((response) => {
                 // handle success
                 console.log(response.data);
 
                 let caixa = document.getElementById('caixa')
                 caixa.innerHTML = ''
-                let jogos = response.data
-                for (let key in jogos) {
-                    caixa.innerHTML = caixa.innerHTML + '<p class="item fundo">' + jogos[key].nome + '<p>'
-                }
+                let questao = response.data
+                let html_code = '<p class="item fundo"> QUESTÃO 1: ' + questao.question + '<p>'
+                html_code = html_code + '<p> A) ' + questao.answers.answer_a + '</p>'
+                html_code = html_code + '<p> B) ' + questao.answers.answer_b + '</p>'
+                html_code = html_code + '<p> C) ' + questao.answers.answer_c + '</p>'
+                html_code = html_code + '<p> D) ' + questao.answers.answer_d + '</p>'
+
+                caixa.innerHTML = html_code
+
             })
         })
 
         elem2.addEventListener('click', () => {
             console.log('cliquei no botão 2')
-            axios.get('http://localhost:3000/jogadores').then((response) => {
+            axios.post('http://localhost:3000/auth', {
+                "username": "admin",
+                "password": "1234"
+            }).then((response) => {
                 // handle success
                 console.log(response.data);
-
-                let caixa = document.getElementById('caixa')
-                caixa.innerHTML = ''
-                let jogadores = response.data
-                for (let key in jogadores) {
-                    caixa.innerHTML = caixa.innerHTML + '<p>' + jogadores[key].nome + '<p>'
-                }
-
             })
         })
 

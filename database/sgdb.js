@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
 // Use JSON file for storage
-const file = join(__dirname, './db_jogos.json')
+const file = join(__dirname, './db_quiz.json')
 
 const adapter = new JSONFile(file)
 const db = new Low(adapter)
