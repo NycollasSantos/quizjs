@@ -1,75 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Teste do servidor</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-        .item {
-            border: 1px solid black;
-            margin: 1px;
-            padding: 2px;
-        }
+  </head>
 
-        .fundo {
-            background-color: #d0d0d0;
-        }
-    </style>
-</head>
+  <body>
+    <div id="caixa" class="item">
+      <h1>Quiz JavaScript</h1>
+      <p class="p_title" id="p_titulo">
+        Salve,Gafanhoto(a)!!🔥🔥 <br />
+        To sabendo que tu é bom em JavaScript?<br />Então Bora testar se você é
+        fera mesmo!<br />
+        👇clique aqui para:👇
+      </p>
+      <div id="div_btn">
+        <button id="botao1" class="btn_iniciar" onclick="mostrar('alter')">
+          Começar o Quiz
+        </button>
+      </div>
+      <p class="style_question" id="question"></p>
+      <section class="alternativa" id="alter">
+        <button class="btn_alt" id="resp_a" onclick="sumir('rA')"></button>
+        <button class="btn_alt" id="resp_b" onclick="sumir('rB')"></button>
+        <button class="btn_alt" id="resp_c" onclick="sumir('rC')"></button>
+        <button class="btn_alt" id="resp_d" onclick="sumir('rD')"></button>
+      </section>
 
-<body>
-
-    <h1>Teste do servidor</h1>
-    <button id="botao1">pegar questão</button>
-    <button id="botao2">pegar token</button>
-    <div id="caixa" class="item" style="width: 300px">
-
+      <button class="prox_pergun" id="prox_questao" onclick="proxima('alter')">
+        PROXIMA PERGUNTA
+      </button>
+      <button class="prox_pergun" id="prox_q2" onclick="quest2('q2')">
+        PR PERGUNTA
+      </button>
+      <button class="prox_pergun" id="prox_q3" onclick="quest3('q3')">
+        PR
+      </button>
+      <button class="prox_pergun" id="prox_q4" onclick="quest4('q4')">P</button>
+      <button class="prox_pergun" id="prox_q5" onclick="quest5('q5')">x</button>
+      criar um bottao para ir pra proxima questão
     </div>
-
-    <script>
-
-        console.log('oi gente');
-
-        let elem1 = document.getElementById('botao1')
-        let elem2 = document.getElementById('botao2')
-
-        elem1.addEventListener('click', () => {
-            console.log('cliquei no botão 1')
-            axios.get('http://localhost:3000/questoes/q01').then((response) => {
-                // handle success
-                console.log(response.data);
-
-                let caixa = document.getElementById('caixa')
-                caixa.innerHTML = ''
-                let questao = response.data
-                let html_code = '<p class="item fundo"> QUESTÃO 1: ' + questao.question + '<p>'
-                html_code = html_code + '<p> A) ' + questao.answers.answer_a + '</p>'
-                html_code = html_code + '<p> B) ' + questao.answers.answer_b + '</p>'
-                html_code = html_code + '<p> C) ' + questao.answers.answer_c + '</p>'
-                html_code = html_code + '<p> D) ' + questao.answers.answer_d + '</p>'
-
-                caixa.innerHTML = html_code
-
-            })
-        })
-
-        elem2.addEventListener('click', () => {
-            console.log('cliquei no botão 2')
-            axios.post('http://localhost:3000/auth', {
-                "username": "admin",
-                "password": "1234"
-            }).then((response) => {
-                // handle success
-                console.log(response.data);
-            })
-        })
-
-
-
-    </script>
-</body>
-
+    <script src="/front/script.js"></script>
+  </body>
 </html>
