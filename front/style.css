@@ -130,10 +130,13 @@ button {
 }
 /*Estlo do botão iniciar*/
 .btn_iniciar {
+  display: flex;
+  justify-content: center;
   font-size: 30px;
   padding: 20px;
   background-color: #ecf900;
   color: #000;
+  width: 50%;
 }
 /*troca a cor do botão ao passar o mouse*/
 .btn_iniciar:hover {
